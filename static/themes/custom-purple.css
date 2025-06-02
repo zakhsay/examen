@@ -1,0 +1,7 @@
+body, .module, .grp-module {
+    background-color: #f8f0fc !important;
+}
+.navbar, .module caption, .grp-module caption {
+    background-color: #a259d9 !important;
+    color: #fff !important;
+}

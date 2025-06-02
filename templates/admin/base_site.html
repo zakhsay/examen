@@ -1,0 +1,15 @@
+{% extends "admin/base_site.html" %}
+
+{% block extrastyle %}
+    {{ block.super }}
+    {% if theme_css_url %}
+        <link rel="stylesheet" href="{{ theme_css_url }}">
+    {% endif %}
+{% endblock %}
+
+{% block extrahead %}
+    {{ block.super }}
+    {% if theme_js_url %}
+        <script src="{{ theme_js_url }}"></script>
+    {% endif %}
+{% endblock %}
