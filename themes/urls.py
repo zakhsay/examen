@@ -12,3 +12,4 @@ urlpatterns = router.urls + [
     path('themes/toggle/', views.AdminThemeViewSet.as_view({'post': 'toggle_active'})),
     path('graphql/', GraphQLView.as_view(graphiql=True)),  # Add this line for GraphQL endpoint
 ]
+

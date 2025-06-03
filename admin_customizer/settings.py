@@ -61,6 +61,8 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'UTC'
 
+# OpenAI API Key (for development, use environment variables in production)
+OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY', 'your_openai_api_key_here') # Replace with your actual key or env var
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -140,6 +142,10 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
@@ -151,7 +157,7 @@ CELERY_TASK_ALWAYS_EAGER = True
 CELERY_TASK_EAGER_PROPAGATES = True
 # Use Redis with password in production
 BASE_URL = 'http://127.0.0.1:8000'
-CELERY_BROKER_URL = 'redis://:password@redis-host:6379/0'
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
 
 
 

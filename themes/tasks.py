@@ -2,7 +2,8 @@ import requests
 from celery import shared_task
 from django.contrib.staticfiles.storage import staticfiles_storage
 from django.conf import settings
-from .models import AdminTheme
+from admin_customizer.ai_service import generate_text_with_openai
+from .models import AdminTheme # Assuming this is still needed
 
 @shared_task()
 def validate_theme_urls(theme_id):
@@ -53,3 +54,15 @@ def validate_theme_urls(theme_id):
 
     # If validation passes, you might want to mark the theme as valid or perform other actions
     # For now, we just let it pass if no exceptions are raised.
+
+
+@shared_task
+def process_ai_request(prompt_text):
+    """
+    Celery task to generate text using OpenAI.
+    """
+    print(f"Processing AI request for prompt: {prompt_text}")
+    ai_response = generate_text_with_openai(prompt_text)
+    print(f"AI Response: {ai_response}")
+    # Here you can save the response to a database, send an email, etc.
+    return ai_response
